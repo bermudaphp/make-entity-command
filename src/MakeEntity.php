@@ -196,7 +196,8 @@ class MakeEntity extends Command
 
         $output->writeln("{$clsName}FactoryInterface successfully created.");
     }
-    private function writeEntityRepositoryTemplate(string $entityName, OutputInterface $output): void
+    
+    protected function writeEntityRepositoryTemplate(string $entityName, OutputInterface $output): void
     {
         $template = $this->getEntityRepositoryTemplate();
         $template->setTokens([
@@ -209,6 +210,7 @@ class MakeEntity extends Command
 
         $output->writeln("{$clsName}Repository successfully created.");
     }
+    
     protected function writeEntityRepositoryInterfaceTemplate(string $entityName, OutputInterface $output): void
     {
         $template = $this->getEntityRepositoryInterfaceTemplate();
@@ -225,6 +227,6 @@ class MakeEntity extends Command
 
     protected function getWriter(): TemplateWriter
     {
-        return $this->writer ?? $this->writer = new TemplateWriter();
+        return $this->writer ?? $this->writer = new TemplateWriter;
     }
 }
